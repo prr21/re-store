@@ -2,11 +2,13 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import { HomePage, CartPage, NotFoundPage } from '../pages';
+import ShopHeader from '../shop-header';
 import './app.css';
 
 const App = () => {
 	return (
-		<div className='d-flex justify-content-around align-items-center mt-4'>
+		<main role="main" className="container">
+      <ShopHeader numItems={5} total={210}/>
 			<Switch>
 
 				<Route path='/' exact
@@ -20,7 +22,7 @@ const App = () => {
 				<Route component={NotFoundPage}/>
 
 			</Switch>
-		</div>
+		</main>
 	)
 }
 
