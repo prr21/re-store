@@ -1,5 +1,6 @@
 const initialState = {
-	books: []
+	books: [],
+	loading: true
 }
 
 const reducer = (state = initialState, action) => {
@@ -7,7 +8,8 @@ const reducer = (state = initialState, action) => {
 
 		case 'BOOKS_LOADED':
 			return {
-				books: action.payload
+				books: action.payload,
+				loading: false
 			};
 
 		default:
