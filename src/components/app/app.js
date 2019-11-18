@@ -15,7 +15,7 @@ const App = () => {
 					component={HomePage}>
 				</Route>
 
-				<Route path='/cart-page' 
+				<Route path='/cart' 
 					component={CartPage}>
 				</Route>
 
