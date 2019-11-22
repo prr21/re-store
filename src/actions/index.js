@@ -24,14 +24,34 @@ const fetchBooks = (dispatch, bookstoreService) => () => {
 		.catch((err) => dispatch( booksError(err) ))
 }
 
-const onAddedToCart = (id) => {
+export const onAddedToCart = (id) => {
 	return {
-		type: 'ADDED_TO_CART',
+		type: 'BOOK_ADDED_TO_CART',
+		payload: id
+	}
+}
+
+export const bookAddedToCart = (id) => {
+	return {
+		type: 'BOOK_ADDED_TO_CART',
+		payload: id
+	}
+}
+
+export const bookRemovedToCart = (id) => {
+	return {
+		type: 'BOOK_REMOVED_FROM_CART',
+		payload: id
+	}
+}
+
+export const allBooksAddedToCart = (id) => {
+	return {
+		type: 'ALL_BOOKS_REMOVED_FROM_CART',
 		payload: id
 	}
 }
 
 export {
-	fetchBooks,
-	onAddedToCart
+	fetchBooks
 }
