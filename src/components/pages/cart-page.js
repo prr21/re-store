@@ -1,9 +1,21 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
-const CartPage = () => {
+import ShoppingCartTable from '../shopping-cart-table';
+
+const CartPage = ({ history }) => {
+
 	return(
-		<div>Cart Page Here!</div>
+		<div>
+			<button className="btn btn-primary btn-lg"
+				onClick={ () => 
+					history.goBack()
+				}>
+				{'<— Назад'}
+			</button>
+			<ShoppingCartTable />
+		</div>
 	)
 }
 
-export default CartPage;
+export default withRouter(CartPage);
