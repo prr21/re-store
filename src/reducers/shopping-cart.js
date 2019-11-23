@@ -1,20 +1,25 @@
-const updateOrder = (bookId, state, diff) => {
-	const { bookList: { books }, shoppingCart: { cartItems } } = state
+const updateOrder = (bookId, state, coeff) => {
+	const { 
+		bookList: { books }, 
+		shoppingCart: { cartItems, orderTotal, numItems } 
+	} = state
 	
 	const book = books.find( ({ id }) => id === bookId )
 	const indexId = cartItems.findIndex( ({ id }) => id === bookId );
 
+	const bookPrice = book.total;
 	const item = cartItems[indexId];
 
-	const newBook = updateItem( book, item, diff);
+	const newBook = updateItem( book, item, coeff);
 
 	return {
 		cartItems: updateCartItems(indexId, newBook, cartItems),
-		orderTotal: 0
+		numItems: numItems + coeff,
+		orderTotal: orderTotal + coeff * bookPrice
 	};
 }
 
-const updateItem = ( book, item = {}, diff) => {
+const updateItem = ( book, item = {}, coeff) => {
 
 	const { 
 		id = book.id,
@@ -25,8 +30,8 @@ const updateItem = ( book, item = {}, diff) => {
 	return {
 		id,
 		title,
-		count: count + diff,
-		total: total + diff * book.total
+		count: count + coeff,
+		total: total + coeff * book.total
 	}
 }
 
@@ -53,6 +58,7 @@ const updateShoppingCart = (state, action) => {
 	if (state === undefined) {
 		return {
 			cartItems: [],
+			numItems: 0,
 			orderTotal: 0
 		}
 	}
