@@ -7,6 +7,7 @@ import './shopping-cart-table.css';
 const ShoppingCartTable = ({ items, total, onIcrease, onDecrease, onDelete }) => {
 
   const renderRow = (item, num) => {
+
     const { id, title, count, total } = item;
     return (
       <tr key={id}>
@@ -57,7 +58,8 @@ const ShoppingCartTable = ({ items, total, onIcrease, onDecrease, onDelete }) =>
   );
 };
 
-const mapStateToProps = ({ cartItems, orderTotal }) => {
+const mapStateToProps = ({shoppingCart: { cartItems, orderTotal }}) => {
+
   return {
       items: cartItems,
       total: orderTotal

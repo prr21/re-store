@@ -12,7 +12,6 @@ import store from './store';
 // import Spinner from '../spinner';
 
 const bookstoreService = new BookstoreService();
-
 ReactDom.render(
 	<Provider store={store}>
 		<ErrorBoundary>
